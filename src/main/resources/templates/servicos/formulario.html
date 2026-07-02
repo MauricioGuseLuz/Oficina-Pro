@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head('Serviço')}"></head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+
+    <h2>Cadastro de Serviço</h2>
+
+    <form th:action="@{/servicos}"
+          th:object="${servico}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+
+            <label>Descrição</label>
+
+            <input class="form-control"
+                   th:field="*{descricao}">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Valor</label>
+
+            <input type="number"
+                   step="0.01"
+                   class="form-control"
+                   th:field="*{valor}">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Tempo Estimado (min)</label>
+
+            <input type="number"
+                   class="form-control"
+                   th:field="*{tempoEstimado}">
+
+        </div>
+
+        <button class="btn btn-success">
+
+            Salvar
+
+        </button>
+
+        <a class="btn btn-secondary"
+           th:href="@{/servicos}">
+
+            Cancelar
+
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

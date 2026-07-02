@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head('Cadastro de Cliente')}"></head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+
+    <div class="card">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">Cadastro de Cliente</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <form th:action="@{/clientes}" th:object="${cliente}" method="post">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="mb-3">
+
+                    <label class="form-label">Nome</label>
+
+                    <input
+                            type="text"
+                            class="form-control"
+                            th:field="*{nome}"
+                            required>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">Telefone</label>
+
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    th:field="*{telefone}">
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">CPF</label>
+
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    th:field="*{cpf}">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">E-mail</label>
+
+                    <input
+                            type="email"
+                            class="form-control"
+                            th:field="*{email}">
+
+                </div>
+
+                <hr>
+
+                <button
+                        type="submit"
+                        class="btn btn-success">
+
+                    💾 Salvar
+
+                </button>
+
+                <a
+                        th:href="@{/clientes}"
+                        class="btn btn-secondary">
+
+                    Cancelar
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head('Serviços')}"></head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between">
+
+        <h2>Serviços</h2>
+
+        <a class="btn btn-primary"
+           th:href="@{/servicos/novo}">
+
+            Novo Serviço
+
+        </a>
+
+    </div>
+
+    <hr>
+
+    <table class="table table-striped">
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Tempo</th>
+            <th></th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr th:each="servico : ${servicos}">
+
+            <td th:text="${servico.id}"></td>
+
+            <td th:text="${servico.descricao}"></td>
+
+            <td th:text="${servico.valor}"></td>
+
+            <td th:text="${servico.tempoEstimado + ' min'}"></td>
+
+            <td>
+
+                <a class="btn btn-warning btn-sm"
+                   th:href="@{/servicos/editar/{id}(id=${servico.id})}">
+
+                    Editar
+
+                </a>
+
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{/servicos/excluir/{id}(id=${servico.id})}">
+
+                    Excluir
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>
