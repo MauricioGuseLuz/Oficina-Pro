@@ -31,7 +31,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String autenticar(@ModelAttribute Usuario usuario,
+    public String autenticar(@ModelAttribute("usuario") Usuario usuario,
                              Model model) {
 
         Usuario usuarioBanco = usuarioService.buscarPorEmail(usuario.getEmail());
@@ -47,6 +47,8 @@ public class LoginController {
             model.addAttribute("usuario", new Usuario());
             return "login";
         }
+
+        System.out.println("LOGIN REALIZADO COM SUCESSO");
 
         return "redirect:/dashboard";
     }
