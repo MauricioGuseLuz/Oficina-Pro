@@ -35,7 +35,22 @@ public class ClienteController {
     @PostMapping
     public String salvar(@ModelAttribute Cliente cliente) {
 
-        clienteService.salvar(cliente);
+        if (cliente.getId() != null) {
+
+            Cliente clienteBanco = clienteService.buscarPorId(cliente.getId());
+
+            clienteBanco.setNome(cliente.getNome());
+            clienteBanco.setTelefone(cliente.getTelefone());
+            clienteBanco.setCpf(cliente.getCpf());
+            clienteBanco.setEmail(cliente.getEmail());
+
+            clienteService.salvar(clienteBanco);
+
+        } else {
+
+            clienteService.salvar(cliente);
+
+        }
 
         return "redirect:/clientes";
     }

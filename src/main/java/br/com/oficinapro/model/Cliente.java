@@ -40,12 +40,25 @@ public class Cliente {
 
     @PrePersist
     public void prePersist() {
+
         if (dataCadastro == null) {
             dataCadastro = LocalDate.now();
         }
 
         if (ativo == null) {
             ativo = true;
+        }
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+
+        if (ativo == null) {
+            ativo = true;
+        }
+
+        if (dataCadastro == null) {
+            dataCadastro = LocalDate.now();
         }
     }
 
